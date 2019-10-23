@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>notarization-upload</key>
+	<dict>
+		<key>RequestUUID</key>
+		<string>f8e267fe-da34-4d6d-8f9c-b255e343d128</string>
+	</dict>
+	<key>os-version</key>
+	<string>10.14.6</string>
+	<key>success-message</key>
+	<string>No errors uploading 'hello_macOS.dmg'.</string>
+	<key>tool-path</key>
+	<string>/Applications/Xcode.app/Contents/SharedFrameworks/ContentDeliveryServices.framework/Versions/A/Frameworks/AppStoreService.framework</string>
+	<key>tool-version</key>
+	<string>4.00.1181</string>
+</dict>
+</plist>

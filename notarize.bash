@@ -1,11 +1,17 @@
 #!/bin/bash
 set -e
 
-CODE_SIGN_SIGNATURE="Developer ID Application"
-APPLE_ID_USER=name@email.com
+# Set these values:
+CODE_SIGN_SIGNATURE="Developer ID Application: John Doe"
+APPLE_ID_USER=JohnDoe@email.com
 APP_SPECIFIC_PASSWORD=xxxx-xxxx-xxxx-xxxx
+
 BUNDLE_ID=com.mycompany.hello
 EXECUTABLE_NAME=hello
+
+echo signature "$CODE_SIGN_SIGNATURE" 
+echo passwd $HELLO_SPECIFIC_PASSWORD
+echo id $APPLE_ID_USER
 
 #compile
 echo "Building"
@@ -13,7 +19,7 @@ fpc -k"-sectcreate __TEXT __info_plist Info.plist" hello.pas
 
 # Clean up temporary files
 rm -f ${EXECUTABLE_NAME}_macOS.dmg
-rm -f ${EXECUTABLE_NAME}_macOS.tmp.dmg
+# rm -f ${EXECUTABLE_NAME}_macOS.tmp.dmg
 rm -f upload_log_file.txt
 rm -f request_log_file.txt
 rm -f log_file.txt
@@ -29,9 +35,12 @@ codesign --verify --verbose --strict $EXECUTABLE_NAME
 
 # We need to distrubute the executable in a disk image because the stapler only works with directories
 echo "Creating disk image..."
-hdiutil create -volname $EXECUTABLE_NAME -srcfolder `pwd` -ov -format UDZO -layout SPUD -fs HFS+J  ${EXECUTABLE_NAME}_macOS.tmp.dmg
-hdiutil convert ${EXECUTABLE_NAME}_macOS.tmp.dmg -format UDZO -o ${EXECUTABLE_NAME}_macOS.dmg
+# hdiutil create -volname $EXECUTABLE_NAME -srcfolder `pwd` -ov -format UDZO -layout SPUD -fs HFS+J  ${EXECUTABLE_NAME}_macOS.tmp.dmg
+# hdiutil convert ${EXECUTABLE_NAME}_macOS.tmp.dmg -format UDZO -o ${EXECUTABLE_NAME}_macOS.dmg
+hdiutil create -volname $EXECUTABLE_NAME -srcfolder `pwd` -ov -format UDZO -layout SPUD -fs HFS+J  ${EXECUTABLE_NAME}_macOS.dmg
 
+
+codesign -s "$CODE_SIGN_SIGNATURE" ${EXECUTABLE_NAME}_macOS.dmg
 # Notarizing with Apple...
 echo "Uploading..."
 xcrun altool --notarize-app -t osx --file ${EXECUTABLE_NAME}_macOS.dmg --primary-bundle-id $BUNDLE_ID -u $APPLE_ID_USER -p $APP_SPECIFIC_PASSWORD --output-format xml > upload_log_file.txt

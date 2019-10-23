@@ -1,0 +1,24 @@
+{
+  "logFormatVersion": 1,
+  "jobId": "f8e267fe-da34-4d6d-8f9c-b255e343d128",
+  "status": "Accepted",
+  "statusSummary": "Ready for distribution",
+  "statusCode": 0,
+  "archiveFilename": "hello_macOS.dmg",
+  "uploadDate": "2019-10-23T16:47:15Z",
+  "sha256": "73bba152868ee8d1f3575f9def44061ac4923c1076314c3131340d03ea992adc",
+  "ticketContents": [
+    {
+      "path": "hello_macOS.dmg",
+      "digestAlgorithm": "SHA-256",
+      "cdhash": "068c2ca1f413b024d022c859be93808b6cff5e69"
+    },
+    {
+      "path": "hello_macOS.dmg/hello",
+      "digestAlgorithm": "SHA-256",
+      "cdhash": "3208f39864da3bc79561443eead56143a585d247",
+      "arch": "x86_64"
+    }
+  ],
+  "issues": null
+}

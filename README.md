@@ -6,8 +6,9 @@ Assuming you have a working Terminal application you will need to complete the f
  1. You will need an Apple developer account.
  2. Generate an app specific password. **You will only do this once.** 
  3. Run the notarize.bash script. **The first time you do this want to edit the Info.plist with your personal CFBundleName, CFBundleExecutable and CFBundleIdentifier values. You will also need to personalize the bash script with your user name and app specific password.** The script will execute the following steps:
-  - Compile your executable and append a Info.plist section to your executable. 
+  - Compile your executable and optionally append a Info.plist section to your executable. 
   - Generate a disk image.
+  - [Signing disk image}(https://developer.apple.com/library/archive/technotes/tn2206/_index.html#//apple_ref/doc/uid/DTS40007919-CH1-TNTAG18).
   - Upload your disk image to Apple. Wait for a response (which can take a few minutes).
   - Assuming success, staple your ticket to your disk image.
  
@@ -18,6 +19,8 @@ Assuming you have a working Terminal application you will need to complete the f
 Login to https://appleid.apple.com and find the `Security > App-Specific Password > Generate Password` section. Copy this password, which will be in the form `xxxx-xxxx-xxxx-xxxx`.
 
 ## Appending a Info.plist
+
+An Info.plist is [not required](https://eclecticlight.co/2019/06/21/notarization-made-a-bit-simpler/), but it is probably not a bad idea.
 
 Here we consider a very simple command line tool that we would traditionally compile with the command
 
@@ -83,12 +86,8 @@ You will need to insert your personal details in this file.
 
 ## References
 
-> Notarizing Your App Before Distribution: 
->https://developer.apple.com/documentation/security/notarizing_your_app_before_distribution?language=objc
-> 
-> Common Notarization Problems: 
->https://developer.apple.com/documentation/security/notarizing_your_app_before_distribution/resolving_common_notarization_issues?language=objc
->
->Further discussion:
->https://eclecticlight.co/2019/06/13/building-and-delivering-command-tools-for-catalina/
+- [Notarizing Your App Before Distribution](https://developer.apple.com/documentation/security/notarizing_your_app_before_distribution?language=objc)
+ - [Common Notarization Problems](https://developer.apple.com/documentation/security/notarizing_your_app_before_distribution/resolving_common_notarization_issues?language=objc)
+ - [Oakley's guide](https://eclecticlight.co/2019/06/13/building-and-delivering-command-tools-for-catalina/) and [update](https://eclecticlight.co/2019/06/21/notarization-made-a-bit-simpler/). 
+
 
