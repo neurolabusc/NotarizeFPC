@@ -8,7 +8,7 @@ Assuming you have a working Terminal application you will need to complete the f
  3. Run the notarize.bash script. **The first time you do this want to edit the Info.plist with your personal CFBundleName, CFBundleExecutable and CFBundleIdentifier values. You will also need to personalize the bash script with your user name and app specific password.** The script will execute the following steps:
   - Compile your executable and optionally append a Info.plist section to your executable. 
   - Generate a disk image.
-  - [Signing disk image}(https://developer.apple.com/library/archive/technotes/tn2206/_index.html#//apple_ref/doc/uid/DTS40007919-CH1-TNTAG18).
+  - [Signing disk image](https://developer.apple.com/library/archive/technotes/tn2206/_index.html#//apple_ref/doc/uid/DTS40007919-CH1-TNTAG18).
   - Upload your disk image to Apple. Wait for a response (which can take a few minutes).
   - Assuming success, staple your ticket to your disk image.
  
